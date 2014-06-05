@@ -22,6 +22,7 @@
     <div class="jumbotron">
         <h1>Total PnL: <%=totalPnL%></h1>
     </div>
+    <h2>Open positions</h2>
     <table class="table table-bordered table-hover">
         <tr>
             <th>User</th>
@@ -30,13 +31,13 @@
             <th>Open price</th>
             <th>Open time</th>
         </tr>
-        <%openDeals.forEach(function(deal) {%>
+        <%openPositions.forEach(function(position) {%>
             <tr>
-                <td><%=deal.name%> &lt;<%=deal.email%>&gt;</td>
-                <td><%=deal.instrument%></td>
-                <td><%=parseFloat(deal.amount)%></td>
-                <td><%=parseFloat(deal.price)%></td>
-                <td><%=deal.open_time%></td>
+                <td><%=position.name%> &lt;<%=position.email%>&gt;</td>
+                <td><%=position.instrument%></td>
+                <td><%=parseFloat(position.amount)%></td>
+                <td><%=parseFloat(position.price)%></td>
+                <td><%=position.open_time%></td>
             </tr>
         <%})%>
     </table>

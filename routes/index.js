@@ -6,12 +6,12 @@ module.exports = function(app) {
         getTotalPnL(function(err, totalPnL) {
             if (err) return next(err);
 
-            getOpenDeals(function(err, openDeals) {
+            getOpenPositions(function(err, openPositions) {
                 if (err) return next(err);
 
                 res.render('index.ejs', {
                     totalPnL: totalPnL,
-                    openDeals: openDeals
+                    openPositions: openPositions
                 });
             });
         });
@@ -25,7 +25,7 @@ module.exports = function(app) {
             });
     }
 
-    function getOpenDeals(callback) {
+    function getOpenPositions(callback) {
         db.query("SELECT * FROM positions p INNER JOIN accounts a on a.id = p.account INNER JOIN users u on u.id = a.owner WHERE a.password IS NOT NULL order by p.open_time DESC")
             .done(function(err, result) {
                 if (err) return callback(err);
