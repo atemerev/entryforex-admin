@@ -1,0 +1,5 @@
+node_modules
+dist
+config.local.js
+
+public/css/application.css
